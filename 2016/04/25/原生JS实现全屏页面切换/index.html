@@ -4,17 +4,21 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Anne Shulman</title>
+  <title>原生JS实现全屏页面切换 | Anne Shulman</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Anne Shulman">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="以前在网上看到过一些全屏切换的页面，网上也有一些JQuery的插件能够实现全屏切换的效果，今天用原生js简单的做了一下这个效果。
+1.实现原理其实要做出这个效果还是挺简单的，下面来分析一下：1.首先设置每个页面的div，让每个div的高度设置为100vh，即让每个div高度为窗口高度，或者可以设置每个div的高度为100%，但100%是相对父元素而言的，所以还需要给HTML、body的高度都设置为">
+<meta property="og:type" content="article">
+<meta property="og:title" content="原生JS实现全屏页面切换">
+<meta property="og:url" content="http://yoursite.com/2016/04/25/原生JS实现全屏页面切换/index.html">
 <meta property="og:site_name" content="Anne Shulman">
-<meta property="og:description">
+<meta property="og:description" content="以前在网上看到过一些全屏切换的页面，网上也有一些JQuery的插件能够实现全屏切换的效果，今天用原生js简单的做了一下这个效果。
+1.实现原理其实要做出这个效果还是挺简单的，下面来分析一下：1.首先设置每个页面的div，让每个div的高度设置为100vh，即让每个div高度为窗口高度，或者可以设置每个div的高度为100%，但100%是相对父元素而言的，所以还需要给HTML、body的高度都设置为">
+<meta property="og:updated_time" content="2016-04-25T15:26:48.776Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Anne Shulman">
-<meta name="twitter:description">
+<meta name="twitter:title" content="原生JS实现全屏页面切换">
+<meta name="twitter:description" content="以前在网上看到过一些全屏切换的页面，网上也有一些JQuery的插件能够实现全屏切换的效果，今天用原生js简单的做了一下这个效果。
+1.实现原理其实要做出这个效果还是挺简单的，下面来分析一下：1.首先设置每个页面的div，让每个div的高度设置为100vh，即让每个div高度为窗口高度，或者可以设置每个div的高度为100%，但100%是相对父元素而言的，所以还需要给HTML、body的高度都设置为">
   
     <link rel="alternative" href="/atom.xml" title="Anne Shulman" type="application/atom+xml">
   
@@ -196,9 +200,7 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
-  
-    <article id="post-原生JS实现全屏页面切换" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-原生JS实现全屏页面切换" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2016/04/25/原生JS实现全屏页面切换/" class="article-date">
@@ -214,12 +216,23 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/25/原生JS实现全屏页面切换/">原生JS实现全屏页面切换</a>
+    <h1 class="article-title" itemprop="name">
+      原生JS实现全屏页面切换
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -233,247 +246,68 @@
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/04/14/CSS3选择器总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CSS3选择器总结</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
   
 </article>
 
 
-
-
-
-
-
-
-
-  
-    <article id="post-CSS3选择器总结" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/04/14/CSS3选择器总结/" class="article-date">
-  	<time datetime="2016-04-14T05:03:50.000Z" itemprop="datePublished">2016-04-14</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/14/CSS3选择器总结/">CSS3选择器总结</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>CSS3的选择器以及浏览器的支持情况。</p>
-<h2 id="1-基本选择器"><a href="#1-基本选择器" class="headerlink" title="1.基本选择器"></a>1.基本选择器</h2><p>通配选择器：    <code>* { margin:0;padding:0; }</code><br>元素选择器：    <code>p { color:red; }</code><br>ID选择器：    <code>#id { …… }</code><br>类选择器：    <code>.class { …… }</code> （也可以用带元素的类选择器：<code>p.class { …… }</code>）<br>群组选择器：    <code>selector1,selector2,……,selectorN { …… }</code></p>
-<h2 id="2-层次选择器"><a href="#2-层次选择器" class="headerlink" title="2.层次选择器"></a>2.层次选择器</h2><p>后代选择器：    <code>div span { …… } /*选择div元素内的span元素*/</code><br>子选择器：    <code>div &gt; span { …… } /*选择div元素的子元素span*/</code><br>相邻兄弟选择器：    <code>div + p { …… } /*选择div后紧邻的p元素*/</code><br>通用选择器：    <code>div ~ p { …… } /*匹配div后所有的兄弟p元素*/</code></p>
-<p>##3.伪类选择器</p>
-<ol>
-<li><p>动态伪类选择器<br>链接伪类选择器：<br><code>a:link { …… } /*匹配的a元素定义了超链接未被访问*/</code><br><code>a:visited { …… } /*匹配已访问的a元素*/</code></p>
-<p>用户行为伪类选择器：<br><code>a:active { …… } /*匹配被激活的a元素*/</code><br><code>a:hover { …… } /*匹配鼠标悬浮的a元素*/</code><br><code>a:focus { …… } /*匹配获得焦点的a元素*/</code></p>
-</li>
-</ol>
-<ol>
-<li><p>目标伪类选择器<br> <code>p:target { …… } /*匹配当前活动的p元素*/</code><br> 例： <code>&lt;a href=&quot;#news&quot;&gt;跳转至&lt;/a&gt;</code><br> <code>&lt;p id=&quot;news&quot;&gt;内容……&lt;/p&gt;</code><br> 当点击a时，p:target选择到当前id=”news”的p元素</p>
-</li>
-<li><p>语言伪类选择器<br> a<code>p:lang(en) { …… } /*选择带有以en开头的lang属性的p元素*/</code></p>
-</li>
-<li><p>UI元素状态伪类选择器<br> 选中状态伪类选择器：<code>input:checked { …… } /*匹配所有选中的input元素（单选、复选）*/</code></p>
-<p> 启用状态伪类选择器：<code>input[type=&quot;text&quot;]:enabled { …… } /*匹配所有可输入的输入框input元素*/</code> </p>
-<p> 不可用状态伪类选择器：<code>input[type=&quot;text&quot;]:disabled { …… } /*匹配所有不可输入的输入框元素*/</code></p>
-</li>
-<li><p>结构伪类选择器<br> <code>p:first-child { …… } /*匹配作为其父元素的第一个子元素的p元素*/</code></p>
-<p> <code>p:last-child { …… } /*匹配属于其父元素的最后一个子元素的p元素*/</code> </p>
-<p> <code>:root { …… } /*匹配当前文档的根元素，即html*/</code> </p>
-<p> <code>div p:nth-child(n) { …… } /*选择div下第n个子元素p（n可以为even表示偶数，odd表示奇数，也可以为表达式）*/</code> </p>
-<p> <code>div p:nth-last-child(n) { …… } /*选择div下倒数第n个子元素p元素*/</code> </p>
-<p> <code>p:nth-of-type(n) { …… } /*选择其父元素下第n个p元素*/</code> </p>
-<p><code>p:nth-last-of-type(n) { …… } /*选择其父元素下倒数第n个p元素*/</code> </p>
-<p><code>p:first-of-type { …… } /*选择其父元素下第1个p元素*/</code> </p>
-<p><code>p:last-of-type { …… } /*选择其父元素下倒数第1个p元素*/</code> </p>
-<p><code>p:only-child { …… } /*选择其父元素下唯一一个子元素p元素*/</code> </p>
-<p><code>p:only-of-type { …… } /*选择其父元素下唯一一个p元素（父元素中可以有其他非p元素，但必须有且只有一个p元素才可以匹配）*/</code> </p>
-<p><code>p:empty { …… } /*选择没有子元素的p元素（并且也不能有文本节点）*/</code></p>
-</li>
-<li><p>否定伪类选择器<br><code>E:not(F) { …… } /*匹配所有除元素F外的所有E元素*/</code><br>例： <code>:not(p) { …… } /*匹配除p元素外的所有元素*/</code><br>例：<code>input:not([type=submit]) { …… } /*匹配所有非submit的input元素*/</code></p>
-</li>
-</ol>
-<p>##4. 伪元素<br><code>p::first-letter { …… } /*匹配p元素的第一个字母*/</code></p>
-<p><code>p::first-line { …… } /*匹配p元素的第一行文本*/</code></p>
-<p><code>p::before { …… } /*在p元素前插入……*/</code></p>
-<p><code>p::after { …… } /*在p元素后插入*/</code></p>
-<p><code>::selection { …… } /*控制被选中的文本的颜色、背景*/</code></p>
-<h2 id="5-属性选择器"><a href="#5-属性选择器" class="headerlink" title="5.属性选择器"></a>5.属性选择器</h2><p><code>E[attr] { …… } /*匹配带有属性attr的E元素，E可省略*/</code><br>例：<code>a[target] { …… }</code></p>
-<p><code>E[attr=val] { …… } /*匹配带有属性attr=val的E元素，E可省略*/</code><br>例：<code>a[target=_blank] { …… }</code></p>
-<p><code>E[attr|=val] { …… } /*匹配带有属性attr=val或以val开头的E元素*/</code><br>例：<code>p[lang|=en] { …… }</code></p>
-<p><code>E[attr~=val] { …… } /*匹配属性attr中有val并且以空格隔开的E元素*/</code><br>例：<code>&lt;a title=&quot;pic flower you&quot;&gt;click me&lt;/a&gt;</code>         <code>a[title~=flower] { …… }</code></p>
-<p><code>E[attr*=val] { …… } /*匹配属性attr中包含val的E元素*/</code><br>例：<code>div[class*=test] { …… }</code></p>
-<p><code>E[attr^=val] { …… } /*匹配属性attr是以val开头的E元素*/</code><br>例：<code>div[class^=test] { …… }</code></p>
-<p><code>E[attr$=val] { …… } /*匹配属性attr是以val结尾的E元素*/</code><br>例：<code>div[class$=test] { …… }</code></p>
-<h2 id="浏览器兼容性"><a href="#浏览器兼容性" class="headerlink" title="浏览器兼容性"></a>浏览器兼容性</h2><table>
-<thead>
-<tr>
-<th>选择器</th>
-<th style="text-align:left">IE</th>
-<th style="text-align:left">Firefox</th>
-<th style="text-align:left">Chrome</th>
-<th style="text-align:left">Safari</th>
-<th style="text-align:left">Opera</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>基本选择器</td>
-<td style="text-align:left">6+</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-</tr>
-<tr>
-<td>层次选择器</td>
-<td style="text-align:left">7+</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-</tr>
-<tr>
-<td>层次选择器（后代选择器）</td>
-<td style="text-align:left">6+</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-</tr>
-<tr>
-<td>动态伪类选择器</td>
-<td style="text-align:left">6+</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-</tr>
-<tr>
-<td>动态伪类选择器（E:active,E:focus）</td>
-<td style="text-align:left">8+</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-</tr>
-<tr>
-<td>目标伪类选择器</td>
-<td style="text-align:left">9+</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">9.6+</td>
-</tr>
-<tr>
-<td>语言伪类选择器</td>
-<td style="text-align:left">8+</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">9.2+</td>
-</tr>
-<tr>
-<td>UI元素状态伪类选择器</td>
-<td style="text-align:left">9+</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-</tr>
-<tr>
-<td>结构伪类选择器</td>
-<td style="text-align:left">9+</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-</tr>
-<tr>
-<td>否定伪类选择器</td>
-<td style="text-align:left">9+</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-</tr>
-<tr>
-<td>伪元素</td>
-<td style="text-align:left">8+</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-</tr>
-<tr>
-<td>属性选择器</td>
-<td style="text-align:left">7+</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>参考资料：《图解CSS3 核心技术与案例实战》 大漠著</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
 
 
 
 
 
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="原生JS实现全屏页面切换" data-title="原生JS实现全屏页面切换" data-url="http://yoursite.com/2016/04/25/原生JS实现全屏页面切换/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
 
 
-  
-  
+
 </div>
       <footer id="footer">
   <div class="outer">
@@ -497,8 +331,8 @@
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
