@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>CSS实现特殊背景效果 | Anne Shulman</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="CSS3的出现使得一些以前需要用图片的背景效果也可以直接用CSS实现，今天分享一下三个用CSS3做的特殊背景。这三个例子都使用到了CSS3的线性渐变。
+下面以webkit引擎下的线性gradient用法为例：12-webkit-linear-gradient( [&amp;lt;point&amp;gt; || &amp;lt;angle&amp;gt;,]? &amp;lt;stop&amp;gt;, &amp;lt;stop&amp;gt; [, &amp;lt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS实现特殊背景效果">
+<meta property="og:url" content="http://yoursite.com/2016/04/27/CSS实现特殊背景效果/index.html">
+<meta property="og:site_name" content="Anne Shulman">
+<meta property="og:description" content="CSS3的出现使得一些以前需要用图片的背景效果也可以直接用CSS实现，今天分享一下三个用CSS3做的特殊背景。这三个例子都使用到了CSS3的线性渐变。
+下面以webkit引擎下的线性gradient用法为例：12-webkit-linear-gradient( [&amp;lt;point&amp;gt; || &amp;lt;angle&amp;gt;,]? &amp;lt;stop&amp;gt;, &amp;lt;stop&amp;gt; [, &amp;lt;">
+<meta property="og:image" content="http://7xsb8q.com1.z0.glb.clouddn.com/css1.JPG">
+<meta property="og:image" content="http://7xsb8q.com1.z0.glb.clouddn.com/css2.JPG">
+<meta property="og:image" content="http://7xsb8q.com1.z0.glb.clouddn.com/css3.JPG">
+<meta property="og:image" content="http://7xsb8q.com1.z0.glb.clouddn.com/css4.JPG">
+<meta property="og:updated_time" content="2016-04-27T12:48:18.511Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS实现特殊背景效果">
+<meta name="twitter:description" content="CSS3的出现使得一些以前需要用图片的背景效果也可以直接用CSS实现，今天分享一下三个用CSS3做的特殊背景。这三个例子都使用到了CSS3的线性渐变。
+下面以webkit引擎下的线性gradient用法为例：12-webkit-linear-gradient( [&amp;lt;point&amp;gt; || &amp;lt;angle&amp;gt;,]? &amp;lt;stop&amp;gt;, &amp;lt;stop&amp;gt; [, &amp;lt;">
+<meta name="twitter:image" content="http://7xsb8q.com1.z0.glb.clouddn.com/css1.JPG">
+  
+    <link rel="alternative" href="/atom.xml" title="Anne Shulman" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://7xsb8q.com1.z0.glb.clouddn.com/pic.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xsb8q.com1.z0.glb.clouddn.com/1.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Jonathan</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="#" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.fengyuanzemin.com/">风缘择敏</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">人生百年，谁不曾大闹天宫，谁不曾头上紧箍，谁不曾爱上层楼，谁不曾孤单上路。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Jonathan</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://7xsb8q.com1.z0.glb.clouddn.com/1.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Jonathan</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="#" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-CSS实现特殊背景效果" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/27/CSS实现特殊背景效果/" class="article-date">
+  	<time datetime="2016-04-27T12:45:27.000Z" itemprop="datePublished">2016-04-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSS实现特殊背景效果
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>CSS3的出现使得一些以前需要用图片的背景效果也可以直接用CSS实现，今天分享一下三个用CSS3做的特殊背景。这三个例子都使用到了CSS3的线性渐变。</p>
+<p>下面以webkit引擎下的线性gradient用法为例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-webkit-linear-gradient( [&lt;point&gt; || &lt;angle&gt;,]? &lt;stop&gt;, &lt;stop&gt; [, &lt;stop&gt;]* )//最新线性渐变写法</span><br><span class="line">-webkit-gradient(&lt;type&gt;, &lt;point&gt; [, &lt;radius&gt;]?, &lt;point&gt; [, &lt;radius&gt;]? [, &lt;stop&gt;]*) //老式语法书写规则</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>对于最新的线性渐变规则，第一个参数为渐变的方向，top 是从上到下、left 是从左到右，若为left top则为从左上角到右下角，也可以设置为角度，表示从某个特定的角度开始，后面的参数则为起点颜色和终点颜色，也可以在中间加上中间点颜色。</li>
+<li>对于老式语法，type指的是渐变类型，linear（线性渐变）或radial（径向渐变），后面则依次为起点、终点位置，起点、终点颜色，中间也可加上中间点颜色，用color-stop()函数，有两个参数，第一个参数表示位置，0表示起点，0.5表示中点，1表示终点，第二个参数为颜色值。</li>
+</ol>
+<p>下面介绍三个例子，所有例子都采用如下html语句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;test&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="1-切角背景效果"><a href="#1-切角背景效果" class="headerlink" title="1.切角背景效果"></a>1.切角背景效果</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.test&#123;</span><br><span class="line">	width: 200px;</span><br><span class="line">	height: 200px;</span><br><span class="line">	background: -webkit-linear-gradient(right bottom, transparent 15px, #99CC99 0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述代码首先给div设置了高度和宽度，然后给div的背景设置了一个线性渐变，从div的右下角开始渐变，渐变的开始是transparent也就是透明，一直持续到15px，之后立即变到颜色为#99CC99，只要#99CC99 后面的数值小于15px都会立即变到此颜色，没有渐变效果。<br>效果图如下：<br><img src="http://7xsb8q.com1.z0.glb.clouddn.com/css1.JPG" alt="切角效果图一"><br>如果我们想要在div的左下角和右下角都做出切角的效果就要用到background-size属性和background-repeat属性，具体如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.test&#123;</span><br><span class="line">width:200px;</span><br><span class="line">height:200px;</span><br><span class="line">background: -webkit-linear-gradient(right bottom, transparent 15px, #99CC99 0px) right,-webkit-linear-gradient(left bottom, transparent 15px, #99CC99 0px) left;</span><br><span class="line">background-size:50% 100%;</span><br><span class="line">background-repeat:no-repeat;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述代码给background设置了两个线性渐变，但两个渐变会彼此覆盖，因此我们需要将它们的宽度都缩小为50%，让每个渐变都只应用于div的一半，但是如果我们没有设置background-repeat为不重复的话，每个渐变还是会重复两次，依旧会彼此覆盖，所以我们设置background-size是为了让两个渐变都缩小为50%，并且不重复，这样右下角切角的位于右侧，左下角切角的位于左侧，就能够正常实现这个效果了。<br>效果图如下：<br><img src="http://7xsb8q.com1.z0.glb.clouddn.com/css2.JPG" alt="切角效果图二"></p>
+<h2 id="2-条纹背景效果"><a href="#2-条纹背景效果" class="headerlink" title="2.条纹背景效果"></a>2.条纹背景效果</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.test&#123;</span><br><span class="line">    height: 250px;</span><br><span class="line">    width: 375px;</span><br><span class="line">	background-color: #99CC99;</span><br><span class="line">	/*用最新语法实现*/</span><br><span class="line">	background-image: -webkit-linear-gradient(top,rgba(255,255,255,.2) 50%,transparent 0);</span><br><span class="line">	background-size:100% 50px;/*让背景的高度为50px，控制条纹数目*/</span><br><span class="line">	/*用老式语法实现*/</span><br><span class="line">	/*background-image:-webkit-gradient(linear, left top,left bottom,color-stop(.5,rgba(255,255,255,.2)),color-stop(.5,transparent),to(transparent));*/</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>给div设置高度宽度，设置背景颜色，紧接着给div设置背景图片，设置为线性渐变，从上向下，起始颜色为rgba(255,255,255,.2)，持续到50%处，紧接着颜色变为透明，即为背景色#99CC99，位置为0，意味着立即变为背景色，没有渐变效果。老式语法也是一样的实现思路。<br>效果图如下：<br><img src="http://7xsb8q.com1.z0.glb.clouddn.com/css3.JPG" alt="条纹背景"></p>
+<h2 id="3-纸张效果"><a href="#3-纸张效果" class="headerlink" title="3.纸张效果"></a>3.纸张效果</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.test&#123;</span><br><span class="line">	width: 300px;</span><br><span class="line">	height: 300px;</span><br><span class="line">	/*老式语法*/</span><br><span class="line">	/*background:-webkit-gradient(linear,left top,left bottom,from(black),color-stop(3%,#99CC99));*/</span><br><span class="line">	/*新的语法实现*/</span><br><span class="line">	background:-webkit-linear-gradient(top,black,#99cc99 3%);</span><br><span class="line">	background-size:100% 30px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述代码同样首先设置宽度高度，紧接着给div设置背景，采用线性渐变，自上向下渐变，开始颜色为黑色，在3%处变为#99cc99颜色，同时需要给div设置background-size，宽度为100%，高度为30px，因此在整个div内便显示出十行的纸张效果。<br>效果图如下：<br><img src="http://7xsb8q.com1.z0.glb.clouddn.com/css4.JPG" alt="纸张效果图"></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/04/25/原生JS实现全屏页面切换/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">原生JS实现全屏页面切换</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="CSS实现特殊背景效果" data-title="CSS实现特殊背景效果" data-url="http://yoursite.com/2016/04/27/CSS实现特殊背景效果/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Jonathan
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
