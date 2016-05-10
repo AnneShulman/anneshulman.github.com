@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Anne Shulman">
 <meta property="og:description" content="CSS3的选择器以及浏览器的支持情况。
 1.基本选择器通配选择器：    * { margin:0;padding:0; }元素选择器：    p { color:red; }ID选择器：    #id { …… }类选择器：    .class { …… } （也可以用带元素的类选择器：p.class { …… }）群组选择器：    selector1,selector2,……,selecto">
-<meta property="og:updated_time" content="2016-04-25T15:27:01.448Z">
+<meta property="og:updated_time" content="2016-05-10T08:30:43.930Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS3选择器总结">
 <meta name="twitter:description" content="CSS3的选择器以及浏览器的支持情况。
@@ -129,6 +129,8 @@
 					
 			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.fengyuanzemin.com/">风缘择敏</a>
 			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.dbftbs.xyz/">dbftbs</a>
+			        
 			        </div>
 				</section>
 				
@@ -230,8 +232,8 @@
         <p>CSS3的选择器以及浏览器的支持情况。</p>
 <h2 id="1-基本选择器"><a href="#1-基本选择器" class="headerlink" title="1.基本选择器"></a>1.基本选择器</h2><p>通配选择器：    <code>* { margin:0;padding:0; }</code><br>元素选择器：    <code>p { color:red; }</code><br>ID选择器：    <code>#id { …… }</code><br>类选择器：    <code>.class { …… }</code> （也可以用带元素的类选择器：<code>p.class { …… }</code>）<br>群组选择器：    <code>selector1,selector2,……,selectorN { …… }</code></p>
 <h2 id="2-层次选择器"><a href="#2-层次选择器" class="headerlink" title="2.层次选择器"></a>2.层次选择器</h2><p>后代选择器：    <code>div span { …… } /*选择div元素内的span元素*/</code><br>子选择器：    <code>div &gt; span { …… } /*选择div元素的子元素span*/</code><br>相邻兄弟选择器：    <code>div + p { …… } /*选择div后紧邻的p元素*/</code><br>通用选择器：    <code>div ~ p { …… } /*匹配div后所有的兄弟p元素*/</code></p>
-<p>##3.伪类选择器</p>
-<ol>
+<a id="more"></a>
+<h2 id="3-伪类选择器"><a href="#3-伪类选择器" class="headerlink" title="3.伪类选择器"></a>3.伪类选择器</h2><ol>
 <li><p>动态伪类选择器<br>链接伪类选择器：<br><code>a:link { …… } /*匹配的a元素定义了超链接未被访问*/</code><br><code>a:visited { …… } /*匹配已访问的a元素*/</code></p>
 <p>用户行为伪类选择器：<br><code>a:active { …… } /*匹配被激活的a元素*/</code><br><code>a:hover { …… } /*匹配鼠标悬浮的a元素*/</code><br><code>a:focus { …… } /*匹配获得焦点的a元素*/</code></p>
 </li>
@@ -261,7 +263,7 @@
 <li><p>否定伪类选择器<br><code>E:not(F) { …… } /*匹配所有除元素F外的所有E元素*/</code><br>例： <code>:not(p) { …… } /*匹配除p元素外的所有元素*/</code><br>例：<code>input:not([type=submit]) { …… } /*匹配所有非submit的input元素*/</code></p>
 </li>
 </ol>
-<p>##4. 伪元素<br><code>p::first-letter { …… } /*匹配p元素的第一个字母*/</code></p>
+<h2 id="4-伪元素"><a href="#4-伪元素" class="headerlink" title="4. 伪元素"></a>4. 伪元素</h2><p><code>p::first-letter { …… } /*匹配p元素的第一个字母*/</code></p>
 <p><code>p::first-line { …… } /*匹配p元素的第一行文本*/</code></p>
 <p><code>p::before { …… } /*在p元素前插入……*/</code></p>
 <p><code>p::after { …… } /*在p元素后插入*/</code></p>
@@ -514,6 +516,12 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
 
   </div>
 </body>

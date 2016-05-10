@@ -18,7 +18,7 @@
 需要实现图片的预加载是因为当页面中的图片较大或网络不佳时，图片的位置可能会是一片空白，可能还会影响页面布局，因此通常都是用一张loading图片占位，等图片加载完成立即填充到img节点里，最近学习到了使用JavaScript代理模式来实现图片预加载。
 在html的body中放置几个img：
 123&amp;lt;img src=&amp;quot;&amp;quo">
-<meta property="og:updated_time" content="2016-05-10T07:53:18.782Z">
+<meta property="og:updated_time" content="2016-05-10T08:27:30.161Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript代理模式之图片预加载">
 <meta name="twitter:description" content="代理模式是为其他对象提供一种代理以控制对这个对象的访问。
@@ -135,6 +135,8 @@
 					
 			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.fengyuanzemin.com/">风缘择敏</a>
 			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.dbftbs.xyz/">dbftbs</a>
+			        
 			        </div>
 				</section>
 				
@@ -238,6 +240,7 @@
 <p>在html的body中放置几个img：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;&quot;&gt;</span><br><span class="line">&lt;img src=&quot;&quot;&gt;</span><br><span class="line">&lt;img src=&quot;&quot;&gt;</span><br></pre></td></tr></table></figure>
 <p>javascript代码：<br>首先创建一个普通的本体对象，这个对象负责获取页面中的div元素，并且提供对外的setSrc接口，通过这个接口可以给所有的img设置src属性：</p>
+<a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">var myImage=(function()&#123;</span><br><span class="line">	var imgNode=document.getElementsByTagName(&quot;img&quot;);//获取页面中的所有img</span><br><span class="line">	return &#123;</span><br><span class="line">		setSrc:function(src)&#123;</span><br><span class="line">			var arg=[].slice.call(arguments);//将传入的参数转为数组</span><br><span class="line">			for(var i=0;i&lt;imgNode.length;i++)&#123;</span><br><span class="line">				if(arg.length==1)&#123;//如果只有一个实参，判断该参数是否为数组</span><br><span class="line">					//如果该参数为数组，则将数组内每一个src赋给对应的img</span><br><span class="line">					if(Object.prototype.toString.call(arg[0])==&quot;[object Array]&quot;)&#123;</span><br><span class="line">						imgNode[i].src=arg[0][i];</span><br><span class="line">					&#125;</span><br><span class="line">					//如果不是数组，则直接将该参数赋给每一个img</span><br><span class="line">					else&#123;</span><br><span class="line">						imgNode[i].src=arg[0];</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">				else&#123;</span><br><span class="line">					imgNode[i].src=arg[i];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
 <p>接下来创建一个代理对象proxyImage，通过这个代理对象，同样提供一个setSrc接口，在图片加载好之前，都先用一个loading.gif图片占位，提示用户图片正在加载：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var proxyImage=(function()&#123;</span><br><span class="line">	var img=new Image;</span><br><span class="line">	var source=[];//保存每一个需要加载的图片</span><br><span class="line">	img.onload=function()&#123;//图片加载完成时调用函数</span><br><span class="line">		console.log(&quot;加载成功！&quot;);</span><br><span class="line">		myImage.setSrc(source);//将数组传递给myImage.setSrc</span><br><span class="line">	&#125;</span><br><span class="line">	return &#123;</span><br><span class="line">		setSrc:function(src)&#123;</span><br><span class="line">			myImage.setSrc(&quot;loading.gif&quot;);//预加载loading.gif</span><br><span class="line">			for(var i=0;i&lt;arguments.length;i++)&#123;</span><br><span class="line">				img.src=arguments[i];//设置要加载的图片的src</span><br><span class="line">				source.push(arguments[i]);//将每一个参数都传入数组内</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
@@ -371,6 +374,12 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
 
   </div>
 </body>

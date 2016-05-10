@@ -125,6 +125,8 @@
 					
 			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.fengyuanzemin.com/">风缘择敏</a>
 			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.dbftbs.xyz/">dbftbs</a>
+			        
 			        </div>
 				</section>
 				
@@ -219,15 +221,6 @@
 <p>在html的body中放置几个img：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;&quot;&gt;</span><br><span class="line">&lt;img src=&quot;&quot;&gt;</span><br><span class="line">&lt;img src=&quot;&quot;&gt;</span><br></pre></td></tr></table></figure>
 <p>javascript代码：<br>首先创建一个普通的本体对象，这个对象负责获取页面中的div元素，并且提供对外的setSrc接口，通过这个接口可以给所有的img设置src属性：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">var myImage=(function()&#123;</span><br><span class="line">	var imgNode=document.getElementsByTagName(&quot;img&quot;);//获取页面中的所有img</span><br><span class="line">	return &#123;</span><br><span class="line">		setSrc:function(src)&#123;</span><br><span class="line">			var arg=[].slice.call(arguments);//将传入的参数转为数组</span><br><span class="line">			for(var i=0;i&lt;imgNode.length;i++)&#123;</span><br><span class="line">				if(arg.length==1)&#123;//如果只有一个实参，判断该参数是否为数组</span><br><span class="line">					//如果该参数为数组，则将数组内每一个src赋给对应的img</span><br><span class="line">					if(Object.prototype.toString.call(arg[0])==&quot;[object Array]&quot;)&#123;</span><br><span class="line">						imgNode[i].src=arg[0][i];</span><br><span class="line">					&#125;</span><br><span class="line">					//如果不是数组，则直接将该参数赋给每一个img</span><br><span class="line">					else&#123;</span><br><span class="line">						imgNode[i].src=arg[0];</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">				else&#123;</span><br><span class="line">					imgNode[i].src=arg[i];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-<p>接下来创建一个代理对象proxyImage，通过这个代理对象，同样提供一个setSrc接口，在图片加载好之前，都先用一个loading.gif图片占位，提示用户图片正在加载：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var proxyImage=(function()&#123;</span><br><span class="line">	var img=new Image;</span><br><span class="line">	var source=[];//保存每一个需要加载的图片</span><br><span class="line">	img.onload=function()&#123;//图片加载完成时调用函数</span><br><span class="line">		console.log(&quot;加载成功！&quot;);</span><br><span class="line">		myImage.setSrc(source);//将数组传递给myImage.setSrc</span><br><span class="line">	&#125;</span><br><span class="line">	return &#123;</span><br><span class="line">		setSrc:function(src)&#123;</span><br><span class="line">			myImage.setSrc(&quot;loading.gif&quot;);//预加载loading.gif</span><br><span class="line">			for(var i=0;i&lt;arguments.length;i++)&#123;</span><br><span class="line">				img.src=arguments[i];//设置要加载的图片的src</span><br><span class="line">				source.push(arguments[i]);//将每一个参数都传入数组内</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-<p>接下来调用这个代理对象：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxyImage.setSrc(&quot;http://7xsb8q.com1.z0.glb.clouddn.com/css1.JPG&quot;,&quot;http://7xsb8q.com1.z0.glb.clouddn.com/css2.JPG&quot;,&quot;http://7xsb8q.com1.z0.glb.clouddn.com/css3.JPG&quot;);</span><br></pre></td></tr></table></figure>
-<p>代理对象负责预加载图片，在预加载的操作完成之后，把请求又重新交给本体myImage。同时我们也并没有改变myImage的接口，给img设置src和图片预加载两个功能被隔离在两个对象里，它们可以各自变化而不影响对方，即使有一天不需要预加载，只需要改成直接请求本体对象即可。</p>
-<hr>
-<p>学习资料：<br>《JavaScript设计模式与开发实践》——曾探</p>
-
       
     </div>
     
@@ -240,6 +233,10 @@
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/05/10/JavaScript代理模式之图片预加载/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -291,15 +288,6 @@
 </ol>
 <p>下面介绍三个例子，所有例子都采用如下html语句：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;test&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="1-切角背景效果"><a href="#1-切角背景效果" class="headerlink" title="1.切角背景效果"></a>1.切角背景效果</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.test&#123;</span><br><span class="line">	width: 200px;</span><br><span class="line">	height: 200px;</span><br><span class="line">	background: -webkit-linear-gradient(right bottom, transparent 15px, #99CC99 0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上述代码首先给div设置了高度和宽度，然后给div的背景设置了一个线性渐变，从div的右下角开始渐变，渐变的开始是transparent也就是透明，一直持续到15px，之后立即变到颜色为#99CC99，只要#99CC99 后面的数值小于15px都会立即变到此颜色，没有渐变效果。<br>效果图如下：<br><img src="http://7xsb8q.com1.z0.glb.clouddn.com/css1.JPG" alt="切角效果图一"><br>如果我们想要在div的左下角和右下角都做出切角的效果就要用到background-size属性和background-repeat属性，具体如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.test&#123;</span><br><span class="line">width:200px;</span><br><span class="line">height:200px;</span><br><span class="line">background: -webkit-linear-gradient(right bottom, transparent 15px, #99CC99 0px) right,-webkit-linear-gradient(left bottom, transparent 15px, #99CC99 0px) left;</span><br><span class="line">background-size:50% 100%;</span><br><span class="line">background-repeat:no-repeat;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上述代码给background设置了两个线性渐变，但两个渐变会彼此覆盖，因此我们需要将它们的宽度都缩小为50%，让每个渐变都只应用于div的一半，但是如果我们没有设置background-repeat为不重复的话，每个渐变还是会重复两次，依旧会彼此覆盖，所以我们设置background-size是为了让两个渐变都缩小为50%，并且不重复，这样右下角切角的位于右侧，左下角切角的位于左侧，就能够正常实现这个效果了。<br>效果图如下：<br><img src="http://7xsb8q.com1.z0.glb.clouddn.com/css2.JPG" alt="切角效果图二"></p>
-<h2 id="2-条纹背景效果"><a href="#2-条纹背景效果" class="headerlink" title="2.条纹背景效果"></a>2.条纹背景效果</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.test&#123;</span><br><span class="line">    height: 250px;</span><br><span class="line">    width: 375px;</span><br><span class="line">	background-color: #99CC99;</span><br><span class="line">	/*用最新语法实现*/</span><br><span class="line">	background-image: -webkit-linear-gradient(top,rgba(255,255,255,.2) 50%,transparent 0);</span><br><span class="line">	background-size:100% 50px;/*让背景的高度为50px，控制条纹数目*/</span><br><span class="line">	/*用老式语法实现*/</span><br><span class="line">	/*background-image:-webkit-gradient(linear, left top,left bottom,color-stop(.5,rgba(255,255,255,.2)),color-stop(.5,transparent),to(transparent));*/</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>给div设置高度宽度，设置背景颜色，紧接着给div设置背景图片，设置为线性渐变，从上向下，起始颜色为rgba(255,255,255,.2)，持续到50%处，紧接着颜色变为透明，即为背景色#99CC99，位置为0，意味着立即变为背景色，没有渐变效果。老式语法也是一样的实现思路。<br>效果图如下：<br><img src="http://7xsb8q.com1.z0.glb.clouddn.com/css3.JPG" alt="条纹背景"></p>
-<h2 id="3-纸张效果"><a href="#3-纸张效果" class="headerlink" title="3.纸张效果"></a>3.纸张效果</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.test&#123;</span><br><span class="line">	width: 300px;</span><br><span class="line">	height: 300px;</span><br><span class="line">	/*老式语法*/</span><br><span class="line">	/*background:-webkit-gradient(linear,left top,left bottom,from(black),color-stop(3%,#99CC99));*/</span><br><span class="line">	/*新的语法实现*/</span><br><span class="line">	background:-webkit-linear-gradient(top,black,#99cc99 3%);</span><br><span class="line">	background-size:100% 30px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上述代码同样首先设置宽度高度，紧接着给div设置背景，采用线性渐变，自上向下渐变，开始颜色为黑色，在3%处变为#99cc99颜色，同时需要给div设置background-size，宽度为100%，高度为30px，因此在整个div内便显示出十行的纸张效果。<br>效果图如下：<br><img src="http://7xsb8q.com1.z0.glb.clouddn.com/css4.JPG" alt="纸张效果图"></p>
-
       
     </div>
     
@@ -312,6 +300,10 @@
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/04/27/CSS实现特殊背景效果/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -358,9 +350,6 @@
         <p>以前在网上看到过一些全屏切换的页面，网上也有一些JQuery的插件能够实现全屏切换的效果，今天用原生js简单的做了一下这个效果。</p>
 <h3 id="1-实现原理"><a href="#1-实现原理" class="headerlink" title="1.实现原理"></a>1.实现原理</h3><p>其实要做出这个效果还是挺简单的，下面来分析一下：<br>1.首先设置每个页面的div，让每个div的高度设置为100vh，即让每个div高度为窗口高度，或者可以设置每个div的高度为100%，但100%是相对父元素而言的，所以还需要给HTML、body的高度都设置为100%。<br>这个时候每个div的高度都是窗口高度了，但是大家看到的全屏切换一般都是没有滚动条的，就像是只有一个页面似的，所以还需要给body设置overflow：hidden的效果，这样就只显示一个页面。<br>2.然后在js部分要实现每次鼠标滚轮页面切换到下一个div，在js部分要处理好鼠标滚轮事件，获取窗口的高度，每次滚轮时，都让当前页面的高度增加一个窗口的高度。</p>
 <h3 id="2-实现步骤"><a href="#2-实现步骤" class="headerlink" title="2.实现步骤"></a>2.实现步骤</h3><p>下面展示一下我的代码，具体分析也写在了代码注释里：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">	&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">	/*CSSreset默认边距都为0*/</span><br><span class="line">	*&#123;</span><br><span class="line">		margin:0;</span><br><span class="line">		padding:0;</span><br><span class="line">	&#125;</span><br><span class="line">	/*显示一个页面*/</span><br><span class="line">	body&#123;</span><br><span class="line">		overflow:hidden;</span><br><span class="line">	&#125;</span><br><span class="line">	/*设置每个div的高度都为窗口高度*/</span><br><span class="line">	div&#123;</span><br><span class="line">		height:100vh;</span><br><span class="line">	&#125;</span><br><span class="line">	/*设置每个div的不同的背景色*/</span><br><span class="line">	.section1&#123;</span><br><span class="line">		background:#eee;</span><br><span class="line">	&#125;</span><br><span class="line">	.section2&#123;</span><br><span class="line">		background:lightblue;</span><br><span class="line">	&#125;</span><br><span class="line">	.section3&#123;</span><br><span class="line">		background:lightgreen;</span><br><span class="line">	&#125;</span><br><span class="line">	&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;div class=&quot;section1&quot;&gt;</span><br><span class="line">		&lt;h1&gt;页面1&lt;/h1&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">	&lt;div class=&quot;section2&quot;&gt;</span><br><span class="line">		&lt;h1&gt;页面2&lt;/h1&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">	&lt;div class=&quot;section3&quot;&gt;</span><br><span class="line">		&lt;h1&gt;页面3&lt;/h1&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">	&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">		var ismoving=false;//使页面滚动时停止监听滚轮事件</span><br><span class="line">		var pageH=document.documentElement.clientHeight;//获得当前窗口高度</span><br><span class="line">		var allheight=document.documentElement.scrollHeight;//获得页面总高度</span><br><span class="line">		//鼠标滚轮事件</span><br><span class="line">		var scrollFunc=function(e)&#123;</span><br><span class="line">			e=e||window.event;</span><br><span class="line">			if(ismoving)&#123;//当页面正在滚动时停止监听滚动事件</span><br><span class="line">				return;</span><br><span class="line">			&#125;else&#123;</span><br><span class="line">			//判断浏览器IE，谷歌滑轮事件(wheelDelta) FireFox滚轮事件(detail) </span><br><span class="line">				if(e.wheelDelta&gt;0||e.detail&lt;0)&#123;//当页面向上滚动时</span><br><span class="line">					var current=window.pageYOffset;//获取当前窗口显示区左上角的Y位置</span><br><span class="line">					if(current==0)&#123;//当前页面为第一页时禁止向上滚动</span><br><span class="line">						return;</span><br><span class="line">					&#125;</span><br><span class="line">					pageScroll(-1,current);//执行滚动页面函数</span><br><span class="line">				&#125;</span><br><span class="line">				if(e.wheelDelta&lt;0||e.detail&gt;0)&#123;//当页面向下滚动时</span><br><span class="line">					var current=window.pageYOffset;</span><br><span class="line">					if(current==allheight-pageH)&#123;//当前页面为最后一页时禁止向下滚动</span><br><span class="line">						return;</span><br><span class="line">					&#125;</span><br><span class="line">					pageScroll(1,current);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		//页面窗口大小改变时重新获取窗口高度</span><br><span class="line">		window.onresize=function()&#123;</span><br><span class="line">			pageH=document.documentElement.clientHeight;</span><br><span class="line">		&#125;</span><br><span class="line">		//绑定火狐浏览器的滚轮事件</span><br><span class="line">		if(document.addEventListener)&#123;</span><br><span class="line">			document.addEventListener(&apos;DOMMouseScroll&apos;,scrollFunc,false);</span><br><span class="line">		&#125;</span><br><span class="line">		//当滚轮发生时执行scrollFunc</span><br><span class="line">		window.onmousewheel=document.onmousewheel=scrollFunc;</span><br><span class="line">		// window.onmousewheel=scrollFunc;</span><br><span class="line">		</span><br><span class="line">		//滚动页面函数</span><br><span class="line">		var timer=null;</span><br><span class="line">		function pageScroll(speed,current)&#123;</span><br><span class="line">			ismoving=true;//表明当前页面正在滚动</span><br><span class="line">			if(speed&gt;0)&#123;//如果速度为正表明正在向下滚动</span><br><span class="line">				var allH=current+pageH;//获得目标位置</span><br><span class="line">				//执行滚动的动画效果</span><br><span class="line">				timer=setInterval(function()&#123;</span><br><span class="line">					var cur=window.pageYOffset;//每次都重新获取当前窗口显示区左上角的Y位置</span><br><span class="line">					window.scrollTo(0,cur+speed);//让页面滚动到当前窗口Y加上speed的位置处</span><br><span class="line">					//为了让滚动有ease-in-out的效果，当滚动的距离大于需要滚动的高度的一半时降低速度</span><br><span class="line">					if(cur &gt; (allH-(pageH/2)))&#123;</span><br><span class="line">						speed--;</span><br><span class="line">					&#125;else&#123;</span><br><span class="line">						speed++;</span><br><span class="line">					&#125;</span><br><span class="line">					//当当前窗口显示区左上角Y位置超过了目标位置时</span><br><span class="line">					if(cur &gt;= allH)&#123;</span><br><span class="line">						clearInterval(timer);//清除定时器</span><br><span class="line">						window.scrollTo(0,allH);//复原到目标位置</span><br><span class="line">						ismoving=false;//使鼠标滚轮可以监听</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;,15)</span><br><span class="line">			&#125;else&#123;</span><br><span class="line">			//速度为负，即向上滚动时，步骤同上</span><br><span class="line">				var allH=current-pageH;</span><br><span class="line">				timer=setInterval(function()&#123;</span><br><span class="line">					var cur=window.pageYOffset;</span><br><span class="line">					window.scrollTo(0,cur+speed);</span><br><span class="line">					if(cur &lt; (allH+(pageH/2)))&#123;</span><br><span class="line">						speed++;</span><br><span class="line">					&#125;else&#123;</span><br><span class="line">						speed--;</span><br><span class="line">					&#125;</span><br><span class="line">					if(cur &lt;= allH)&#123;</span><br><span class="line">						clearInterval(timer);</span><br><span class="line">						window.scrollTo(0,allH);</span><br><span class="line">						ismoving=false;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;,15)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<p>这样的话一个最基本的全屏页面切换就做好了。</p>
-
       
     </div>
     
@@ -373,6 +362,10 @@
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/04/25/原生JS实现全屏页面切换/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -419,162 +412,6 @@
         <p>CSS3的选择器以及浏览器的支持情况。</p>
 <h2 id="1-基本选择器"><a href="#1-基本选择器" class="headerlink" title="1.基本选择器"></a>1.基本选择器</h2><p>通配选择器：    <code>* { margin:0;padding:0; }</code><br>元素选择器：    <code>p { color:red; }</code><br>ID选择器：    <code>#id { …… }</code><br>类选择器：    <code>.class { …… }</code> （也可以用带元素的类选择器：<code>p.class { …… }</code>）<br>群组选择器：    <code>selector1,selector2,……,selectorN { …… }</code></p>
 <h2 id="2-层次选择器"><a href="#2-层次选择器" class="headerlink" title="2.层次选择器"></a>2.层次选择器</h2><p>后代选择器：    <code>div span { …… } /*选择div元素内的span元素*/</code><br>子选择器：    <code>div &gt; span { …… } /*选择div元素的子元素span*/</code><br>相邻兄弟选择器：    <code>div + p { …… } /*选择div后紧邻的p元素*/</code><br>通用选择器：    <code>div ~ p { …… } /*匹配div后所有的兄弟p元素*/</code></p>
-<p>##3.伪类选择器</p>
-<ol>
-<li><p>动态伪类选择器<br>链接伪类选择器：<br><code>a:link { …… } /*匹配的a元素定义了超链接未被访问*/</code><br><code>a:visited { …… } /*匹配已访问的a元素*/</code></p>
-<p>用户行为伪类选择器：<br><code>a:active { …… } /*匹配被激活的a元素*/</code><br><code>a:hover { …… } /*匹配鼠标悬浮的a元素*/</code><br><code>a:focus { …… } /*匹配获得焦点的a元素*/</code></p>
-</li>
-</ol>
-<ol>
-<li><p>目标伪类选择器<br> <code>p:target { …… } /*匹配当前活动的p元素*/</code><br> 例： <code>&lt;a href=&quot;#news&quot;&gt;跳转至&lt;/a&gt;</code><br> <code>&lt;p id=&quot;news&quot;&gt;内容……&lt;/p&gt;</code><br> 当点击a时，p:target选择到当前id=”news”的p元素</p>
-</li>
-<li><p>语言伪类选择器<br> a<code>p:lang(en) { …… } /*选择带有以en开头的lang属性的p元素*/</code></p>
-</li>
-<li><p>UI元素状态伪类选择器<br> 选中状态伪类选择器：<code>input:checked { …… } /*匹配所有选中的input元素（单选、复选）*/</code></p>
-<p> 启用状态伪类选择器：<code>input[type=&quot;text&quot;]:enabled { …… } /*匹配所有可输入的输入框input元素*/</code> </p>
-<p> 不可用状态伪类选择器：<code>input[type=&quot;text&quot;]:disabled { …… } /*匹配所有不可输入的输入框元素*/</code></p>
-</li>
-<li><p>结构伪类选择器<br> <code>p:first-child { …… } /*匹配作为其父元素的第一个子元素的p元素*/</code></p>
-<p> <code>p:last-child { …… } /*匹配属于其父元素的最后一个子元素的p元素*/</code> </p>
-<p> <code>:root { …… } /*匹配当前文档的根元素，即html*/</code> </p>
-<p> <code>div p:nth-child(n) { …… } /*选择div下第n个子元素p（n可以为even表示偶数，odd表示奇数，也可以为表达式）*/</code> </p>
-<p> <code>div p:nth-last-child(n) { …… } /*选择div下倒数第n个子元素p元素*/</code> </p>
-<p> <code>p:nth-of-type(n) { …… } /*选择其父元素下第n个p元素*/</code> </p>
-<p><code>p:nth-last-of-type(n) { …… } /*选择其父元素下倒数第n个p元素*/</code> </p>
-<p><code>p:first-of-type { …… } /*选择其父元素下第1个p元素*/</code> </p>
-<p><code>p:last-of-type { …… } /*选择其父元素下倒数第1个p元素*/</code> </p>
-<p><code>p:only-child { …… } /*选择其父元素下唯一一个子元素p元素*/</code> </p>
-<p><code>p:only-of-type { …… } /*选择其父元素下唯一一个p元素（父元素中可以有其他非p元素，但必须有且只有一个p元素才可以匹配）*/</code> </p>
-<p><code>p:empty { …… } /*选择没有子元素的p元素（并且也不能有文本节点）*/</code></p>
-</li>
-<li><p>否定伪类选择器<br><code>E:not(F) { …… } /*匹配所有除元素F外的所有E元素*/</code><br>例： <code>:not(p) { …… } /*匹配除p元素外的所有元素*/</code><br>例：<code>input:not([type=submit]) { …… } /*匹配所有非submit的input元素*/</code></p>
-</li>
-</ol>
-<p>##4. 伪元素<br><code>p::first-letter { …… } /*匹配p元素的第一个字母*/</code></p>
-<p><code>p::first-line { …… } /*匹配p元素的第一行文本*/</code></p>
-<p><code>p::before { …… } /*在p元素前插入……*/</code></p>
-<p><code>p::after { …… } /*在p元素后插入*/</code></p>
-<p><code>::selection { …… } /*控制被选中的文本的颜色、背景*/</code></p>
-<h2 id="5-属性选择器"><a href="#5-属性选择器" class="headerlink" title="5.属性选择器"></a>5.属性选择器</h2><p><code>E[attr] { …… } /*匹配带有属性attr的E元素，E可省略*/</code><br>例：<code>a[target] { …… }</code></p>
-<p><code>E[attr=val] { …… } /*匹配带有属性attr=val的E元素，E可省略*/</code><br>例：<code>a[target=_blank] { …… }</code></p>
-<p><code>E[attr|=val] { …… } /*匹配带有属性attr=val或以val开头的E元素*/</code><br>例：<code>p[lang|=en] { …… }</code></p>
-<p><code>E[attr~=val] { …… } /*匹配属性attr中有val并且以空格隔开的E元素*/</code><br>例：<code>&lt;a title=&quot;pic flower you&quot;&gt;click me&lt;/a&gt;</code>         <code>a[title~=flower] { …… }</code></p>
-<p><code>E[attr*=val] { …… } /*匹配属性attr中包含val的E元素*/</code><br>例：<code>div[class*=test] { …… }</code></p>
-<p><code>E[attr^=val] { …… } /*匹配属性attr是以val开头的E元素*/</code><br>例：<code>div[class^=test] { …… }</code></p>
-<p><code>E[attr$=val] { …… } /*匹配属性attr是以val结尾的E元素*/</code><br>例：<code>div[class$=test] { …… }</code></p>
-<h2 id="浏览器兼容性"><a href="#浏览器兼容性" class="headerlink" title="浏览器兼容性"></a>浏览器兼容性</h2><table>
-<thead>
-<tr>
-<th>选择器</th>
-<th style="text-align:left">IE</th>
-<th style="text-align:left">Firefox</th>
-<th style="text-align:left">Chrome</th>
-<th style="text-align:left">Safari</th>
-<th style="text-align:left">Opera</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>基本选择器</td>
-<td style="text-align:left">6+</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-</tr>
-<tr>
-<td>层次选择器</td>
-<td style="text-align:left">7+</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-</tr>
-<tr>
-<td>层次选择器（后代选择器）</td>
-<td style="text-align:left">6+</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-</tr>
-<tr>
-<td>动态伪类选择器</td>
-<td style="text-align:left">6+</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-</tr>
-<tr>
-<td>动态伪类选择器（E:active,E:focus）</td>
-<td style="text-align:left">8+</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-</tr>
-<tr>
-<td>目标伪类选择器</td>
-<td style="text-align:left">9+</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">9.6+</td>
-</tr>
-<tr>
-<td>语言伪类选择器</td>
-<td style="text-align:left">8+</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">9.2+</td>
-</tr>
-<tr>
-<td>UI元素状态伪类选择器</td>
-<td style="text-align:left">9+</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-</tr>
-<tr>
-<td>结构伪类选择器</td>
-<td style="text-align:left">9+</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-</tr>
-<tr>
-<td>否定伪类选择器</td>
-<td style="text-align:left">9+</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-</tr>
-<tr>
-<td>伪元素</td>
-<td style="text-align:left">8+</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-</tr>
-<tr>
-<td>属性选择器</td>
-<td style="text-align:left">7+</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-<td style="text-align:left">√</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>参考资料：《图解CSS3 核心技术与案例实战》 大漠著</p>
-
       
     </div>
     
@@ -587,6 +424,10 @@
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/04/14/CSS3选择器总结/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -664,6 +505,12 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
 
   </div>
 </body>
