@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>ES6学习笔记（二） | Anne Shulman</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1. 数组的扩展a.Array.from()Array.from()可以将类数组对象和可遍历对象转化为真正的数组。常见的类数组对象有函数内部的arguments对象，以及DOM操作返回的NodeList集合。
+123456789101112131415161718192021222324252627//类数组对象转为数组let arrayLike = &amp;#123;    &amp;apos;0&amp;apos;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6学习笔记（二）">
+<meta property="og:url" content="http://yoursite.com/2016/08/24/ES6学习笔记（二）/index.html">
+<meta property="og:site_name" content="Anne Shulman">
+<meta property="og:description" content="1. 数组的扩展a.Array.from()Array.from()可以将类数组对象和可遍历对象转化为真正的数组。常见的类数组对象有函数内部的arguments对象，以及DOM操作返回的NodeList集合。
+123456789101112131415161718192021222324252627//类数组对象转为数组let arrayLike = &amp;#123;    &amp;apos;0&amp;apos;">
+<meta property="og:updated_time" content="2016-08-23T23:16:01.018Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6学习笔记（二）">
+<meta name="twitter:description" content="1. 数组的扩展a.Array.from()Array.from()可以将类数组对象和可遍历对象转化为真正的数组。常见的类数组对象有函数内部的arguments对象，以及DOM操作返回的NodeList集合。
+123456789101112131415161718192021222324252627//类数组对象转为数组let arrayLike = &amp;#123;    &amp;apos;0&amp;apos;">
+  
+    <link rel="alternative" href="/atom.xml" title="Anne Shulman" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://7xsb8q.com1.z0.glb.clouddn.com/pic.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xsb8q.com1.z0.glb.clouddn.com/1.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Jonathan</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/AnneShulman" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.fengyuanzemin.com/">风缘择敏</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.dbftbs.xyz/">dbftbs</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">人生百年，谁不曾大闹天宫，谁不曾头上紧箍，谁不曾爱上层楼，谁不曾孤单上路。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Jonathan</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://7xsb8q.com1.z0.glb.clouddn.com/1.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Jonathan</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/AnneShulman" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-ES6学习笔记（二）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/24/ES6学习笔记（二）/" class="article-date">
+  	<time datetime="2016-08-23T23:12:39.000Z" itemprop="datePublished">2016-08-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ES6学习笔记（二）
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-数组的扩展"><a href="#1-数组的扩展" class="headerlink" title="1. 数组的扩展"></a>1. 数组的扩展</h2><h3 id="a-Array-from"><a href="#a-Array-from" class="headerlink" title="a.Array.from()"></a>a.Array.from()</h3><p>Array.from()可以将类数组对象和可遍历对象转化为真正的数组。<br>常见的类数组对象有函数内部的arguments对象，以及DOM操作返回的NodeList集合。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">//类数组对象转为数组</span><br><span class="line">let arrayLike = &#123;</span><br><span class="line">    &apos;0&apos;: &apos;a&apos;,</span><br><span class="line">    &apos;1&apos;: &apos;b&apos;,</span><br><span class="line">    &apos;2&apos;: &apos;c&apos;,</span><br><span class="line">    length: 3</span><br><span class="line">&#125;;</span><br><span class="line">let arr2 = Array.from(arrayLike); // [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;]</span><br><span class="line"></span><br><span class="line">//函数内部的arguments参数转为数组</span><br><span class="line">function foo() &#123;</span><br><span class="line">  var args = Array.from(arguments); //args为参数数组</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//NodeList对象转为数组</span><br><span class="line">let ps = document.querySelectorAll(&apos;p&apos;);</span><br><span class="line">let psArr = Array.from(ps);</span><br><span class="line"></span><br><span class="line">//参数为字符串</span><br><span class="line">Array.from(&apos;hello&apos;); // [&apos;h&apos;, &apos;e&apos;, &apos;l&apos;, &apos;l&apos;, &apos;o&apos;]</span><br><span class="line"></span><br><span class="line">//参数是数组，返回一个一样的新数组</span><br><span class="line">Array.from([1, 2, 3]); // [1, 2, 3]</span><br><span class="line"></span><br><span class="line">//只要是部署了Iterator接口的数据结构，都能将其转为数组。</span><br><span class="line">let namesSet = new Set([&apos;a&apos;, &apos;b&apos;])</span><br><span class="line">Array.from(namesSet) // [&apos;a&apos;, &apos;b&apos;]</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>Array.from()可以接受第二个参数，作用类似于数组的map方法，用来对每个元素进行处理，将处理后的值放入返回的数组。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arrayLike1 = &#123;</span><br><span class="line">    <span class="string">'0'</span>: <span class="string">'1'</span>,</span><br><span class="line">    <span class="string">'1'</span>: <span class="string">'2'</span>,</span><br><span class="line">    <span class="string">'2'</span>: <span class="string">'3'</span>,</span><br><span class="line">    length: <span class="number">3</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> arrs1 = <span class="built_in">Array</span>.from( arrayLike1, <span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123; <span class="keyword">return</span> x*x; &#125;);</span><br><span class="line"><span class="comment">//[1,4,9]</span></span><br></pre></td></tr></table></figure>
+<h3 id="b-Array-of"><a href="#b-Array-of" class="headerlink" title="b.Array.of()"></a>b.Array.of()</h3><p>Array.of方法用于将一组值，转换为数组。Array.of总是返回参数值组成的数组。如果没有参数，就返回一个空数组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Array.of(3, 11, 8) // [3,11,8]</span><br><span class="line">Array.of(3) // [3]</span><br><span class="line">Array.of(3).length // 1</span><br></pre></td></tr></table></figure>
+<h3 id="c-copyWithin"><a href="#c-copyWithin" class="headerlink" title="c.copyWithin()"></a>c.copyWithin()</h3><p>在当前数组内部，将指定位置的成员复制到其他位置（会覆盖原有成员），然后返回当前数组，会修改原数组。<br>copyWithin(target,start,end);</p>
+<ul>
+<li>target 表示从此位置开始拷贝</li>
+<li>start 表示从该位置开始读取数据</li>
+<li>end  表示从该位置停止读数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 将3号位复制到0号位</span><br><span class="line">[1, 2, 3, 4, 5].copyWithin(0, 3, 4)</span><br><span class="line">// [4, 2, 3, 4, 5]</span><br></pre></td></tr></table></figure>
+<h3 id="d-find-和findIndex"><a href="#d-find-和findIndex" class="headerlink" title="d.find()和findIndex()"></a>d.find()和findIndex()</h3><p>数组实例的find方法，用于找出第一个符合条件的数组成员。它的参数是一个回调函数，所有数组成员依次执行该回调函数，直到找出第一个返回值为true的成员，然后返回该成员。如果没有符合条件的成员，则返回undefined。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[1, 5, 10, 15].find(function(value, index, arr) &#123;</span><br><span class="line">  return value &gt; 9;</span><br><span class="line">&#125;) // 10</span><br></pre></td></tr></table></figure>
+<p>数组实例的findIndex方法的用法与find方法非常类似，返回第一个符合条件的数组成员的位置，如果所有成员都不符合条件，则返回-1。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[1, 5, 10, 15].findIndex(function(value, index, arr) &#123;</span><br><span class="line">  return value &gt; 9;</span><br><span class="line">&#125;) // 2</span><br></pre></td></tr></table></figure>
+<h3 id="e-其他方法"><a href="#e-其他方法" class="headerlink" title="e.其他方法"></a>e.其他方法</h3><ul>
+<li><p>fill(content,start,end) 填充数组</p>
+<p>content表示填充的内容，start和end分别表示填充的起始位置和结束位置。</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>].fill(<span class="number">7</span>)</span><br><span class="line"><span class="comment">// [7, 7, 7]</span></span><br><span class="line"></span><br><span class="line">[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>].fill(<span class="number">7</span>, <span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"><span class="comment">// ['a', 7, 'c']</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>entries(),keys(),values()</p>
+<p>可以用for…of…遍历数组</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">for (let index of [&apos;a&apos;, &apos;b&apos;].keys()) &#123;</span><br><span class="line">  console.log(index);</span><br><span class="line">&#125;</span><br><span class="line">// 0</span><br><span class="line">// 1</span><br><span class="line"></span><br><span class="line">for (let elem of [&apos;a&apos;, &apos;b&apos;].values()) &#123;</span><br><span class="line">  console.log(elem);</span><br><span class="line">&#125;</span><br><span class="line">// &apos;a&apos;</span><br><span class="line">// &apos;b&apos;</span><br><span class="line"></span><br><span class="line">for (let [index, elem] of [&apos;a&apos;, &apos;b&apos;].entries()) &#123;</span><br><span class="line">  console.log(index, elem);</span><br><span class="line">&#125;</span><br><span class="line">// 0 &quot;a&quot;</span><br><span class="line">// 1 &quot;b&quot;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>includes(content,start) 检测数组是否包含给定值</p>
+<p>content表示给定值，start表示搜索的起始位置</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[1, 2, 3].includes(2);     // true</span><br><span class="line">[1, 2, 3].includes(4);     // false</span><br><span class="line"></span><br><span class="line">[1, 2, 3].includes(3, 3);  // false</span><br></pre></td></tr></table></figure>
+<h2 id="2-函数的扩展"><a href="#2-函数的扩展" class="headerlink" title="2.函数的扩展"></a>2.函数的扩展</h2><h3 id="a-函数参数默认值"><a href="#a-函数参数默认值" class="headerlink" title="a.函数参数默认值"></a>a.函数参数默认值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function log(x, y = &apos;World&apos;) &#123;</span><br><span class="line">  console.log(x, y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">log(&apos;Hello&apos;) // Hello World</span><br><span class="line">log(&apos;Hello&apos;, &apos;China&apos;) // Hello China</span><br><span class="line">log(&apos;Hello&apos;, &apos;&apos;) // Hello</span><br></pre></td></tr></table></figure>
+<p>通常定义了默认值的参数都是位于函数的尾参数，且调用时可以省略，但是如果定义了默认值的参数不在参数尾部，则这个参数没法省略，除非显示输入undefined</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function foo(x = 5, y = 6) &#123;</span><br><span class="line">  console.log(x, y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo(undefined, null)</span><br><span class="line">// 5 null</span><br></pre></td></tr></table></figure>
+<p>指定了默认值以后，函数的length属性，将返回没有指定默认值的参数个数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">log.length; //1</span><br><span class="line">foo.length; //0</span><br></pre></td></tr></table></figure>
+<h3 id="b-rest参数"><a href="#b-rest参数" class="headerlink" title="b.rest参数"></a>b.rest参数</h3><p>rest参数（形式为“…变量名”），用于获取函数的多余参数，这样就不需要使用arguments对象了。rest参数搭配的变量是一个数组，该变量将多余的参数放入数组中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function concatenateAll(...args) &#123;</span><br><span class="line">  return args；</span><br><span class="line">&#125;</span><br><span class="line">concatenateAll(1,2,3); //[1,2,3]</span><br></pre></td></tr></table></figure>
+<h3 id="c-扩展运算符"><a href="#c-扩展运算符" class="headerlink" title="c.扩展运算符..."></a>c.扩展运算符<code>...</code></h3><p>扩转运算符也可以把数组或类数组对象展开成一系列用逗号隔开的值，在函数调用时可以取代apply方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="function"><span class="keyword">function</span>(<span class="params">a, b, c</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a); <span class="built_in">console</span>.log(b); <span class="built_in">console</span>.log(c);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="comment">//传统写法</span></span><br><span class="line">foo(arr[<span class="number">0</span>], arr[<span class="number">1</span>], arr[<span class="number">2</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用扩展运算符</span></span><br><span class="line">foo(...arr);</span><br><span class="line"><span class="comment">//1</span></span><br><span class="line"><span class="comment">//2</span></span><br><span class="line"><span class="comment">//3</span></span><br></pre></td></tr></table></figure>
+<p>扩展运算符的应用：</p>
+<ul>
+<li>合并数组</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let a=[1,2];</span><br><span class="line">let b=[3,4];</span><br><span class="line">let c=[...a,...b]; //[1,2,3,4]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>与解构赋值结合</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//扩展运算符用于数组赋值时，只能放在参数的最后一位</span><br><span class="line">const [first, ...rest] = [1, 2, 3, 4, 5];</span><br><span class="line">first // 1</span><br><span class="line">rest  // [2, 3, 4, 5]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将特定某些数据结构转化为数组</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">// arguments对象转为数组</span><br><span class="line">function foo() &#123;</span><br><span class="line">  var args = [...arguments];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// NodeList对象转为数组</span><br><span class="line">[...document.querySelectorAll(&apos;div&apos;)]</span><br><span class="line"></span><br><span class="line">//将字符串转换为数组</span><br><span class="line">[...&apos;hello&apos;]</span><br><span class="line">// [ &quot;h&quot;, &quot;e&quot;, &quot;l&quot;, &quot;l&quot;, &quot;o&quot; ]</span><br><span class="line"></span><br><span class="line">//map、set结构转换为数组</span><br><span class="line">let map = new Map([</span><br><span class="line">  [1, &apos;one&apos;],</span><br><span class="line">  [2, &apos;two&apos;],</span><br><span class="line">  [3, &apos;three&apos;],</span><br><span class="line">]);</span><br><span class="line">let arr = [...map.keys()]; // [1, 2, 3]</span><br><span class="line"></span><br><span class="line">//Generator函数转为数组</span><br><span class="line">var go = function*()&#123;</span><br><span class="line">  yield 1;</span><br><span class="line">  yield 2;</span><br><span class="line">  yield 3;</span><br><span class="line">&#125;;</span><br><span class="line">[...go()] // [1, 2, 3]</span><br></pre></td></tr></table></figure>
+<h3 id="d-箭头函数"><a href="#d-箭头函数" class="headerlink" title="d.箭头函数"></a>d.箭头函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var f = v =&gt; v;</span><br><span class="line"></span><br><span class="line">//等同于</span><br><span class="line">var f = function(v) &#123;</span><br><span class="line">  return v;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>当箭头函数的参数为0或多个时，用圆括号代表参数部分</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var f = () =&gt; 5;</span><br><span class="line">// 等同于</span><br><span class="line">var f = function () &#123; return 5 &#125;;</span><br><span class="line"></span><br><span class="line">var sum = (num1, num2) =&gt; num1 + num2;</span><br><span class="line">// 等同于</span><br><span class="line">var sum = function(num1, num2) &#123;</span><br><span class="line">  return num1 + num2;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>箭头函数可以简化回调函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[1,2,3].map(function (x) &#123;</span><br><span class="line">  return x * x;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 箭头函数写法</span><br><span class="line">[1,2,3].map(x =&gt; x * x);</span><br></pre></td></tr></table></figure>
+<p>注意点：</p>
+<ul>
+<li>函数体内的this对象，是定义时所在的对象，而不是使用时所在的对象。</li>
+<li>不可以当作构造函数，不可以使用new命令，否则会抛错。</li>
+<li>不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用Rest参数代替。</li>
+<li>不可以使用yield命令，因此箭头函数不能用作Generator函数。</li>
+</ul>
+<hr>
+<p>参考资料：《ECMAScript 6 入门》——阮一峰</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/24/ES6学习笔记（三）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          ES6学习笔记（三）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/24/ES6学习笔记（一）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ES6学习笔记（一）</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="ES6学习笔记（二）" data-title="ES6学习笔记（二）" data-url="http://yoursite.com/2016/08/24/ES6学习笔记（二）/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Jonathan
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
+
+  </div>
+</body>
+</html>
